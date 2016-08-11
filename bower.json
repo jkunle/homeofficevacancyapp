@@ -1,0 +1,21 @@
+{
+  "name": "homeofficevacancyapp",
+  "description": "a small website showing a list of applicants for a job vacancy",
+  "main": "index.js",
+  "authors": [
+    "Ola Jegede"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/jkunle/homeofficevacancyapp",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "handlebars": "^4.0.5",
+    "jquery": "^3.1.0"
+  }
+}

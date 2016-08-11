@@ -1,0 +1,30 @@
+{
+  "name": "homeofficevacancyapp",
+  "version": "1.0.0",
+  "description": "a small website showing a list of applicants for a job vacancy",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jkunle/homeofficevacancyapp.git"
+  },
+  "author": "Ola Jegede",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jkunle/homeofficevacancyapp/issues"
+  },
+  "homepage": "https://github.com/jkunle/homeofficevacancyapp#readme",
+  "devDependencies": {
+    "govuk-elements-sass": "^1.2.2",
+    "gulp": "github:gulpjs/gulp#4.0",
+    "gulp-copy": "0.0.2",
+    "gulp-inject": "^4.1.0",
+    "gulp-jshint": "^1.9.0",
+    "gulp-sass": "^2.2.0",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-webserver": "^0.9.1",
+    "wiredep": "^4.0.0"
+  }
+}
