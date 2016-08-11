@@ -4,7 +4,7 @@
         sourcemaps = require('gulp-sourcemaps');
 
     module.exports = function sassingassets (done) {
-        gulp.src('assets/style.scss')
+        gulp.src('sass/style.scss')
             .pipe(sourcemaps.init())
             .pipe(sass({
                 outputStyle: 'expanded'
