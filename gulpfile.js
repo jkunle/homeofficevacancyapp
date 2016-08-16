@@ -1,27 +1,36 @@
-(function () {
-    var gulp = require('gulp'),
-        webserver = require('gulp-webserver'),
-        sassing = require('./gulp/sass'),
-        injecting = require('./gulp/inject'),
-        copying = require('./gulp/copygovassets');
+var gulp = require('gulp'),
+    webserver = require('gulp-webserver'),
+    sassing = require('./gulp/sass'),
+    Injector = require('./gulp/inject'),
+    GovUk = require('./gulp/govuk');
 
 
+function browser() {
+    gulp.src('./views')
+        .pipe(webserver({
+            livereload: true,
+            open: true
+        }));
+};
 
-    function browser() {
-        gulp.src('./views')
-            .pipe(webserver({
-                livereload: true,
-                open: true
-            }));
-    };
+gulp.task('copying', gulp.parallel(
+    GovUk.sass,
+    GovUk.mustache,
+    GovUk.assets
+));
 
-    gulp.task('copying', copying);
-    gulp.task('sassing', sassing);
-    gulp.task('injecting', injecting);
-    gulp.task('browsering', browser);
-    
-    gulp.task('default', gulp.series(copying, sassing, injecting, browser));
+gulp.task('injecting', gulp.series(
+    Injector.injectingassets, Injector.assetsIntoTemplate
+));
+gulp.task('browser', browser);
 
+gulp.task('sassing', gulp.parallel(
+    GovUk.sass,
+    GovUk.mustache
+), sassing);
 
-
-})();
+gulp.task('default', gulp.series(gulp.parallel(
+    GovUk.sass,
+    GovUk.mustache,
+    GovUk.assets
+), sassing, Injector.injectingassets, browser));
