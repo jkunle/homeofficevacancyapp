@@ -1,0 +1,98 @@
+ <!-- {{>breadcrumb}}-->
+		
+	
+	<div class="grid-row">
+		
+		
+		<div class="column-two-thirds">
+	
+	
+   <!--   <form class="form" method="get" action="/">
+    		
+    				
+    		<h1 class="form-title heading-xlarge">{{page_name}}</h1>
+  
+  
+  			<div class="form-group">
+  				
+  				<label class="form-label" for="criteria">Criteria 
+  				  <span class="form-hint">Select the criteria you want to search by</span>
+  				</label>
+      
+          <select class="form-control-select" id="criteria">
+            <option>-- Please make a selection --</option>
+            <option value="1">Single business identifier</option>
+            <option value="2">Business name</option>
+            <option value="3">Business postcode</option>
+            <option value="4" selected>Customer name</option>
+            <option value="5">Customer postcode</option>
+            <option value="6">Trader number</option>
+            <option value="7">Vendor number</option>
+            <option value="8">Customer reference number</option>
+            <option value="9">Personal identifier</option>
+          </select>
+  				
+  			</div>
+  
+  
+  			<div class="form-group">
+    			
+  				<label class="form-label" for="last-name">Last name 
+  					<span class="form-hint">Enter at least the first 3 characters</span>
+  				</label>
+  				
+  				<input class="form-control" id="last-name" type="text" value="Smith">
+  				
+  			</div>
+  
+  
+  			<div class="form-group">
+    			
+    			<button class="button" type="submit">Search</button>
+    			
+  			</div>
+  
+  
+  		</form>
+	-->
+	
+		</div>
+	
+	
+	</div>
+	
+	
+	<h3 class="heading-medium">Search results</h3>
+	
+  <table class="table-customer-search">
+   {{#each applicants}}
+    <caption class="visuallyhidden">Customer search listing</caption>
+   
+    <thead>
+      <tr>
+        <th scope="col">Candidate Number</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Application Date</th>
+        <th class="action last" scope="col"><span class="visuallyhidden">Status</span></th>
+      </tr>
+    </thead>
+    
+    <tbody>
+      
+      <tr itemtype="http://schema.org/Organization" itemscope>
+        <td>{{number}}</td>
+        <td>{{firstname}}</td>
+        <td>{{lastname}}</td>
+        <td>{{date}}</td>
+        <td class="status last">
+          <div class="statuses">
+            <span class="icon icon-lock" title="Customer's account is locked" role="presentation"></span>
+            <span class="icon icon-deactivate" title="Customer's account is deactivated" role="presentation"></span>
+          </div>
+        </td>
+      </tr>
+    
+    </tbody>
+   {{/each}}
+  </table>
