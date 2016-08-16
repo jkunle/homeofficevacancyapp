@@ -1,3 +1,5 @@
 node_modules/
 lib/
 assets/
+views/govuk_template.html
+views/layouts/govuk_template.html
