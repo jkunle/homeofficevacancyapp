@@ -1,4 +1,3 @@
-(function () {
     var gulp = require('gulp'),
         sass = require('gulp-sass'),
         sourcemaps = require('gulp-sourcemaps');
@@ -11,7 +10,6 @@
             }))
             .on('error', sass.logError)
             .pipe(sourcemaps.write())
-            .pipe(gulp.dest('builds/css'))
+            .pipe(gulp.dest('css'))
             .on('end', done);
     }
-})();
