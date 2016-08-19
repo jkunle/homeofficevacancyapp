@@ -1,0 +1,40 @@
+// ==========================================================================
+// Microdata
+// ==========================================================================
+
+
+.hcard {
+
+  &-adr {
+    margin-bottom: em(20, 16);
+
+    @include media(tablet) {
+      margin-bottom: em(20);
+    }
+
+  }
+
+  margin-bottom: em(20, 16);
+
+  @include media(tablet) {
+    margin-bottom: em(20);
+  }
+
+}
+
+
+// An exception to the rule
+
+details {
+
+  .hcard {
+    margin-bottom: 0;
+
+    &-adr {
+      margin-bottom: 0;
+    }
+
+  }
+
+}
+

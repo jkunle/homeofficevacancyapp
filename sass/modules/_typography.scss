@@ -1,0 +1,111 @@
+// ==========================================================================
+// Typography
+// ==========================================================================
+
+ 
+b,
+strong {
+  font-weight: bold;
+}
+
+
+.text-warning,
+.text-pending {
+  display: inline-block;
+  
+  &:before {
+    @include border-radius(50%);
+    content: '!';
+    color: $white;
+    display: inline-block;
+    font-family: arial;
+    font-weight: bold;
+    height: 1em;
+    line-height: 1;
+    margin-left: 5px;
+    margin-right: 5px;
+    padding: 2px;
+    text-align: center;
+    width: 1em;
+  }
+  
+}
+
+
+.form {
+  
+  .text-warning,
+  .text-pending {
+    
+    &:before {
+      margin-left: 0;
+    }
+    
+  }
+  
+}
+
+
+// Text warning
+
+.text-warning {
+  color: $error-colour;
+
+  &:before {
+    background-color: $error-colour;
+  }
+
+}
+
+
+// Text pending
+
+.text-pending {
+
+  &:before {
+    background-color: $black;
+  }
+
+}
+
+
+// Page header
+
+.page-header {
+  margin-top: em(15, 16);
+  margin-bottom: em(30, 16);
+
+  @include media(tablet) {
+    margin-top: em(30, 19);
+    margin-bottom: em(60, 19);
+  }
+
+  h1 {
+    @include bold-48();
+  }
+  
+  .heading-xlarge {
+    margin-bottom: em(30, 48);
+  }
+
+  dl, 
+  ul {
+    margin: .5em 0 0 0;
+  }
+
+}
+
+
+// Code blocks
+
+pre {
+  line-height: 1.5;
+  margin-bottom: em(40);
+}
+
+
+pre, 
+code {
+  border: 0 none;
+}
+
