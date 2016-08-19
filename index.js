@@ -1,13 +1,18 @@
+"use strict";
 var express = require('express');
 var app = express();
+var config = require('./config')(app);
 
-require('./config')(app);
-var dataService = require('./services/database')();
-var homeController = require('./controllers/homeController');
+var repo = config.dao;
+var dataService = require('./services/database')(repo);
+var applicantController = require('./controllers/applicantController')(dataService);
 // inject router dependencies the controller and dataservice
-var homeRouter = require('./routes/homeRouter')(homeController, dataService);
+var applicantRouter = require('./routes/applicantRouter')(applicantController);
 
-app.use('/', homeRouter)
+app.use(applicantRouter);
+app.use('/pages',applicantRouter);
+app.use('/pages:/page',applicantRouter);
+app.use('/search', applicantRouter);
 
 app.listen(3080);
 console.log('Vacancy application is running on http://localhost:3080');

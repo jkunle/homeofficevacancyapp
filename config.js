@@ -1,16 +1,65 @@
+'use strict';
 var path = require('path'),
     hbs = require('express-hbs'),
     express = require('express'),
     bodyParser = require('body-parser'),
-    _viewpath = path.join(__dirname, 'views/layouts');
+    _viewpath = path.join(__dirname, 'views/layouts'),
+    dao = require('./services/dao')();
 
 var settings = {
     pageTitle: 'Home office vacancy app',
     assetPath: '/assets/',
     bodyClasses: '',
     govukRoot: 'https://gov.uk',
-    headerClass: '',
-    lang: 'en'
+    govukText: 'GOV.UK',
+    headerClass: 'with-proposition',
+    logoLinkTitle: 'Go to the GOV.UK homepage',
+    lang: 'en',
+    jobtitle: 'HOM/963/16 Developer x6',
+    jobref: 1499294
+};
+var total = require('./services/data.json').length;
+var limit = 10;
+var pages = [];
+
+function paginationMiddleware(req, res, next) {
+
+    var page = parseInt(req.params.page) || 1,
+        num = page * limit;
+    let pageCount = Math.ceil(total / limit);
+
+    for (var number = 1; number <= pageCount; number++) {
+        let link = `/pages/${number}`;
+        pages[number - 1] = {
+            number: number,
+            link: link
+        };
+    }
+    res.locals.pages = pages;
+    res.locals.limit = limit;
+    res.locals.num = num;
+    res.locals.pageCount = pageCount;
+    res.locals.page = page;
+    res.locals.total = total;
+    next();
+};
+function configureLocalDataMiddleware(req, res, next) {
+    res.locals.title = settings.pageTitle;
+    res.locals.baseurl = '/';
+    res.locals.logoLinkTitle = settings.jobtitle;
+    res.locals.globalHeaderText = settings.govukText;
+    res.locals.insideHeader = settings.pageTitle;
+
+    res.locals.pageTitle = settings.pageTitle;
+    res.locals.assetPath = settings.assetPath;
+    res.locals.bodyClasses = settings.bodyClasses;
+    res.locals.govukRoot = settings.govukRoot;
+    res.locals.headerClass = settings.headerClass;
+    res.locals.htmlLang = settings.lang;
+
+    res.locals.jobtitle = settings.jobtitle;
+    res.locals.jobref = settings.jobref;
+    next();
 }
 function init(app) {
 
@@ -23,22 +72,15 @@ function init(app) {
         partialsDir: path.join(__dirname, 'views/partials')
     }));
 
-    app.use(function (req, res, next) {
-        res.locals.pageTitle = settings.pageTitle,
-        res.locals.assetPath = settings.assetPath
-        app.locals.bodyClasses = settings.bodyClasses
-        app.locals.govukRoot = settings.govukRoot,
-        app.locals.headerClass = settings.headerClass
-        app.locals.htmlLang = settings.lang
-        next();
-    });
+    app.use(configureLocalDataMiddleware);
+
 
     app.set('view engine', '.hbs');
     app.set('views', path.join(__dirname, 'views'));
     app.use('/assets', express.static(path.join(__dirname, settings.assetPath)));
-    app.use('/css', express.static(path.join(__dirname, settings.assetPath)));
+    app.use('/css', express.static(path.join(__dirname, 'css')));
     app.use(express.static(_viewpath));
-    ;
+
 
     app.use(bodyParser.json());
 
@@ -46,6 +88,10 @@ function init(app) {
         extended: true
     }));
 
+    return {
+        dao: dao,
+        pagination: paginationMiddleware
+    }
 
 }
 module.exports = init;

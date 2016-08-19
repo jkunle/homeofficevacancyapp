@@ -1,0 +1,31 @@
+// ==========================================================================
+// Related
+// ==========================================================================
+
+
+.related {
+  border-top: 10px solid $govuk-blue;
+  margin-top: 1.6em;
+  
+  &-section {
+    padding-right: 1em;
+    
+    &-title {
+      @extend .bold-medium;
+      margin-top: .5em;
+      margin-bottom: .5em;
+    }
+    
+    &-links {
+      @extend .font-xsmall;
+      margin-bottom: 3em;
+    
+      li {
+        margin-bottom: 1em;
+      }
+    }
+    
+  }
+  
+}
+

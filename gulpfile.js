@@ -14,13 +14,14 @@ function browser() {
 };
 
 gulp.task('copying', gulp.parallel(
-    GovUk.sass,
     GovUk.mustache,
-    GovUk.assets
-));
+    GovUk.assets,
+    GovUk.js
+), GovUk.sass);
 
 gulp.task('injecting', gulp.series(
-    Injector.injectingassets, Injector.assetsIntoTemplate
+    Injector.injectingassets, 
+    Injector.assetsIntoTemplate
 ));
 gulp.task('browser', browser);
 
@@ -30,7 +31,8 @@ gulp.task('sassing', gulp.parallel(
 ), sassing);
 
 gulp.task('default', gulp.series(gulp.parallel(
-    GovUk.sass,
     GovUk.mustache,
-    GovUk.assets
+    GovUk.assets,
+    GovUk.js,
+    GovUk.sass
 ), sassing, Injector.injectingassets, browser));

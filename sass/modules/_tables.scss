@@ -1,0 +1,401 @@
+// ==========================================================================
+// Tables
+// ==========================================================================
+
+
+// General
+
+table, .table {
+  margin-bottom: 1.05263em * 2; // 40px
+  
+  
+  // Errors
+  
+  .error {
+    border-left: 0;
+    padding-left: inherit;
+  
+    @include media(tablet) {
+      border-left: 0;
+      padding-left: inherit;
+    }
+    
+    .form-control {
+      margin-top: -7px;
+      margin-bottom: -7px;
+    }
+    
+  }
+  
+  
+  // General
+  
+  tbody {
+    
+    th, td {
+      font-weight: 400;
+      vertical-align: top;
+    }
+    
+  }
+  
+  tfoot {
+    border-top: 2px solid rgb(0, 0, 0);
+  }
+  
+  
+  // Helpers
+  
+  .form-control {
+    @include core-16;
+    margin-top: -4px;
+    margin-bottom: -4px;
+    position: relative;
+    width: auto;
+  }
+  
+  .last {
+    padding-right: 0;
+    text-align: right;
+  }
+  
+  .new {
+    
+    th,
+    td {
+      font-weight: bold;
+    }
+    
+  }
+  
+  
+  // Specific
+  
+  &-summary {
+    
+    tr {
+      
+      &:first-child {
+        
+        th, td {
+          border-top: 1px solid $grey-2;
+        }
+        
+      }
+      
+    }
+    
+    &-heading {
+      position: relative;
+
+      a {
+        position: absolute; right: 0; top: 5px;
+      }
+
+    }
+    
+    &-title {
+      font-weight: 700;
+      width: 45%;
+    }
+    
+    &-content {
+
+      ul {
+        margin: 0; // override list bullet margins
+      }
+
+    }
+    
+    &-action {
+      padding-right: 0;
+      text-align: right;
+    }
+    
+  }
+  
+  
+  &-land-features {
+
+    @include media(tablet) {
+
+      .text-warning {
+        float: right;
+        margin-top: -1px;
+        margin-bottom: -1px;
+      }
+
+    }
+
+  }
+  
+  
+  &-land-parcels {
+    
+    .tag {
+      display: inline-block;
+      padding: 0 20px;
+      
+      &-done {
+        background-color: $button-colour;
+        color: white;
+      }
+      
+    }
+    
+    @include media(tablet) {
+
+      .text-pending {
+        float: right;
+        margin-top: -1px;
+        margin-bottom: -1px;
+      }
+
+    }
+    
+  }
+  
+  
+  &-land-entitlements {
+    
+    .parcel-id {
+      width: 13%;
+    }
+    
+    .land-uses {
+      width: 10%;
+    }
+    
+    .land-area {
+      width: 10%;
+    }
+
+    .parcel-size {
+      width: 10%;
+    }
+    
+    .eligible-verified {
+      width: 15%;
+    }
+
+    .eligible-declared {
+      width: 15%;
+    }
+
+    .eligible-area {
+      width: 12%;
+    }
+
+    .edit-activated-area {
+      width: 3%;
+    }
+    
+    .form-control {
+      margin: -5px -5px -5px 0;
+    }
+
+    .text-warning {
+      position: relative;
+      top: -1px;
+    }
+    
+    input {
+      @include core-16($tabular-numbers: true);
+      text-align: right;
+    }
+    
+  }
+  
+  
+  &-customer-search {
+      
+    .statuses {
+      float: right;
+      
+      .icon {
+        margin-right: 0;
+        margin-left: 10px;
+      }
+      
+    }
+    
+  }
+  
+  
+  &-land-removal {
+
+    tbody {
+
+      th {
+
+        @include media(tablet) {
+          width: 30%;
+        }
+
+      }
+
+    }
+
+    &-summary {
+
+      tbody {
+
+        th {
+
+          @include media(tablet) {
+            width: 30%;
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+  
+  
+  &-form {
+    
+    th, td {
+      padding: 12px 0;
+      vertical-align: middle;
+    }
+    
+    .top {
+      vertical-align: top;
+    }
+    
+  }
+  
+  
+  // Highlighting
+  
+  &-highlight {
+      
+    tbody {
+      
+      tr:hover,
+      tr.hover {
+      
+        th, td {
+          background-color: $grey-3;
+        }
+      
+      }
+    
+    }
+    
+  }  
+  
+  
+}
+
+
+// Javascript enabled
+
+.js-enabled {
+  
+  
+  .table {
+  
+    &-land-entitlements {
+  
+      tbody {
+  
+        tr {
+          display: none;
+  
+          &:first-child {
+            display: table-row;
+          }
+  
+        }
+  
+        &.open {
+          border-top: 2px solid $black;
+          border-bottom: 2px solid $black;
+  
+          tr {
+            display: table-row;
+          }
+  
+        }
+  
+      }
+  
+    }
+  
+  }
+  
+  
+}
+
+
+// Enhancements
+
+.js-table {
+  
+  
+  // Clickable rows
+  
+  &-rows-clickable {
+  
+    tbody {
+    
+      tr {
+        cursor: pointer;
+      }
+      
+      tr:hover,
+      tr.hover {
+      
+        th, 
+        td {
+          background-color: $grey-3;
+        }
+    
+      }
+    
+    }
+  
+  }
+   
+  
+  // Sortable
+  
+  &-sortable {
+    
+    .sortable {
+    //  @include user-select(none);
+      @extend .link;
+      cursor: pointer;
+      position: relative;
+      text-decoration: underline;
+    }
+    
+    .sorting-asc,
+    .sorting-desc {
+      &:after {
+        margin-left: 4px;
+        position: absolute;
+      }
+    }
+    
+    .sorting-asc {
+      &:after {
+        content: '▲';
+      }
+    }
+  
+    .sorting-desc {
+      &:after {
+        content: '▼';
+      }
+    }
+    
+  }
+
+  
+}
+

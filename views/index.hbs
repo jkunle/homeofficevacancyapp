@@ -1,98 +1,72 @@
  <!-- {{>breadcrumb}}-->
 		
-	
 	<div class="grid-row">
-		
-		
-		<div class="column-two-thirds">
+		 
+        <h2 class="heading-large">{{jobtitle}} 
+          <span class="heading-secondary">Job Reference: {{jobref}}</span>
+        </h2>
+	      <h2 class="heading-large">Search
+          <span class="heading-secondary">You can find a candidate by number or search for multiple results by typing a sequence of part of their firstname lastname in any order</span>
+        </h2>
+        <div class="example">
+        
+          <form class="form" method="POST" action="/search">
+            
+            <div class="form-search">
+              
+              <label class="form-label" for="search"></label>        
+              <input class="form-control" name="search" id="/search" type="text">
+              
+              <button class="button" type="submit">Search</button>
+              
+            </div>
+          
+          </form>
+        
+        
+        </div>
 	
 	
-   <!--   <form class="form" method="get" action="/">
-    		
-    				
-    		<h1 class="form-title heading-xlarge">{{page_name}}</h1>
-  
-  
-  			<div class="form-group">
-  				
-  				<label class="form-label" for="criteria">Criteria 
-  				  <span class="form-hint">Select the criteria you want to search by</span>
-  				</label>
-      
-          <select class="form-control-select" id="criteria">
-            <option>-- Please make a selection --</option>
-            <option value="1">Single business identifier</option>
-            <option value="2">Business name</option>
-            <option value="3">Business postcode</option>
-            <option value="4" selected>Customer name</option>
-            <option value="5">Customer postcode</option>
-            <option value="6">Trader number</option>
-            <option value="7">Vendor number</option>
-            <option value="8">Customer reference number</option>
-            <option value="9">Personal identifier</option>
-          </select>
-  				
-  			</div>
-  
-  
-  			<div class="form-group">
-    			
-  				<label class="form-label" for="last-name">Last name 
-  					<span class="form-hint">Enter at least the first 3 characters</span>
-  				</label>
-  				
-  				<input class="form-control" id="last-name" type="text" value="Smith">
-  				
-  			</div>
-  
-  
-  			<div class="form-group">
-    			
-    			<button class="button" type="submit">Search</button>
-    			
-  			</div>
-  
-  
-  		</form>
-	-->
-	
-		</div>
-	
-	
-	</div>
-	
-	
-	<h3 class="heading-medium">Search results</h3>
-	
+	  <p class="lede"></p>
+
+
+
   <table class="table-customer-search">
-   {{#each applicants}}
+   
     <caption class="visuallyhidden">Customer search listing</caption>
    
     <thead>
       <tr>
-        <th scope="col">Candidate Number</th>
+        <th scope="col">Candidate No.</th>
         <th scope="col">First Name</th>
         <th scope="col">Last Name</th>
         <th scope="col">Application Date</th>
-        <th class="action last" scope="col"><span class="visuallyhidden">Status</span></th>
+        <th scope="col">Details</th>
       </tr>
     </thead>
     
     <tbody>
-      
-      <tr itemtype="http://schema.org/Organization" itemscope>
+      {{#each applicants}}
+      <tr>
         <td>{{number}}</td>
         <td>{{firstname}}</td>
         <td>{{lastname}}</td>
         <td>{{date}}</td>
-        <td class="status last">
-          <div class="statuses">
-            <span class="icon icon-lock" title="Customer's account is locked" role="presentation"></span>
-            <span class="icon icon-deactivate" title="Customer's account is deactivated" role="presentation"></span>
-          </div>
-        </td>
+        <td><a href="/index/{{number}}">View<span class="visuallyhidden">Details</span></a></td>
+        
       </tr>
-    
+    {{/each}}
     </tbody>
-   {{/each}}
+   
   </table>
+  <div class="pager">
+    <div class="pager-controls">
+      <ul class="pager-items">
+        {{#each pages }}
+           <li><a href="{{this.link}}">{{this.number}}</a></li>
+        {{/each}}      
+      </ul>
+      <a class="pager-next" href="{{Next.link}}">{{Next.number}}</a>
+    </div>
+    <div class="pager-summary"> {{#if pages }} Showing {{page}} &ndash; {{num}} of {{total}} results {{/if}}</div>
+  </div>

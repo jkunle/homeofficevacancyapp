@@ -1,0 +1,79 @@
+	 {{>breadcrumb}}
+
+
+   <div class="grid-row">
+    
+      <div class="column-two-thirds">
+       
+        <h1 class="heading-xlarge">Application Number: {{profile.number}}
+             <span class="heading-secondary">Job Reference: {{jobref}}</span>
+        </h1>
+        <h2 class="heading-large">{{jobtitle}}</h2>
+        <p class="lede"></p>
+      </div>
+   
+   </div>
+
+
+    <div class="table-summary-heading">
+      <h2 class="heading-medium">Personal details</h2>
+    </div>
+
+    <table class="table-summary">
+
+      <caption class="visuallyhidden">Personal details</caption>
+
+      <tbody itemtype="http://schema.org/Organization" itemscope>
+
+        <tr>
+          <th class="table-summary-title" scope="row">Applicant Name:</th>
+          <td class="table-summary-content" itemprop="name">{{profile.firstname}} {{profile.lastname}}</td>
+          <td class="table-summary-action"></td>
+        </tr>
+
+        <tr>
+          <th class="table-summary-title" scope="row"><abbr title="Single Business Identifier">Contact Number</abbr></th>
+          <td class="table-summary-content">{{profile.contact_number}}</td>
+          <td class="table-summary-action"></td>
+        </tr>
+
+        <tr>
+          <th class="table-summary-title" scope="row">Email</th>
+          <td class="table-summary-content">{{profile.profileMail}}</td>
+          <td class="table-summary-action"></td>
+        </tr>
+        <tr>
+          <th class="table-summary-title" scope="row">Nationality</th>
+          <td class="table-summary-content">{{profile.nationality}}</td>
+          <td class="table-summary-action"></td>
+        </tr>
+       
+      </tbody>
+
+    </table>
+
+    <h2 class="heading-medium">Work Experience</h2>
+
+    <table class="table-summary">
+
+      <caption class="visuallyhidden">Work Experience</caption>
+
+      <tbody>
+
+        <tr aria-rowspan="3" >
+          <td class="table-summary-content">{{profile.work_experience}}</td>
+        </tr>
+
+      </tbody>
+
+    </table>
+
+    <div class="grid-row">
+    
+      <div class="column-two-thirds">
+        
+        <p><a class="button button-start" href="/" role="button">Back</a></p>
+        
+      </div>
+   
+   </div>

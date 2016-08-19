@@ -1,0 +1,170 @@
+// ==========================================================================
+// Overrides
+// ==========================================================================
+
+
+// Footer colour extended / font rendering fixes
+
+html {
+  background-color: $grey-3;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+body {
+  @include box-sizing(border-box);
+	background-color: $page-colour;
+}
+
+
+// Selection
+
+::-moz-selection {
+  background: $grey-3;
+  color: $black;
+}
+
+::selection {
+  background: $grey-3;
+  color: $black;
+}
+
+
+// For loading purposes
+
+#global-header,
+#global-header-bar {
+	position: relative;
+	z-index: 12; // Sits above loading...
+}
+
+
+// Main heading no back link
+
+.heading-xlarge-noback {
+  @extend .heading-xlarge;
+  margin-top: em(25, 32);
+
+  @include media(tablet) {
+    margin-top: em(55, 48);
+  }
+
+}
+
+
+.back-link {
+  display: inline-block;
+  margin-top: 30px;
+
+  // Fixes bug (white line top and bottom on focus)
+
+  &:focus {
+    border: 1px solid transparent;
+    margin: 29px -1px -1px -1px;
+    outline-width: 2px;
+  }
+
+}
+
+
+// External link icon reposition if inside small type
+
+.font-xsmall {
+  
+  a[rel="external"]::after {
+    background-position: right 4px;    
+  }
+  
+  a[rel="external"]:hover::after {
+    background-position: right -384px;    
+  }
+  
+}
+
+
+// Exception for details
+
+details {
+  margin-top: em(5, 16 );
+  margin-bottom: em(20, 16);
+
+  @include media(tablet) {
+    margin-top: em(5);
+    margin-bottom: em(20);
+  }
+
+}
+
+details .panel-indent {
+  margin: 0;
+  padding: 10px 15px;
+}
+
+
+// links
+
+#global-header #logo, a:link {
+  overflow: hidden; // Fixes unwanted padding on focus
+}
+
+
+// Related external icon placement override
+
+.related-section-links {
+
+  a[rel='external']::after {
+    background-position: right 4px;
+    content: '\A0\A0\A0\A0\A0';
+  }
+
+}
+
+
+// Button text alignment for button links
+
+.button {
+  text-align: center;
+  
+  &-start {
+    text-align: left;
+  }
+  
+}
+
+
+// Sticky element
+
+.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 20px;
+  z-index: 12;
+  
+  &:before,
+  &:after {
+    content: '';
+    display: table;
+  }
+   
+}
+
+
+// Help and guidance
+
+@media print { 
+ 
+ .help {
+   display: none !important;
+   
+   &-open {
+    display: none !important;  
+   }
+   
+ }
+ 
+}
+
