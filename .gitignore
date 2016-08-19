@@ -4,3 +4,4 @@ assets/
 views/govuk_template.html
 views/layouts/govuk_template.html
 .vscode/launch.json
+database/
