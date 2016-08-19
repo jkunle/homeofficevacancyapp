@@ -29,8 +29,6 @@
 	
 	  <p class="lede"></p>
 
-
-
   <table class="table-customer-search">
    
     <caption class="visuallyhidden">Customer search listing</caption>
@@ -53,8 +51,16 @@
         <td>{{lastname}}</td>
         <td>{{date}}</td>
         <td><a href="/index/{{number}}">View<span class="visuallyhidden">Details</span></a></td>
-        
       </tr>
+      {{else}}
+       <div class="notice">
+          <i class="icon icon-important">
+            <span class="visuallyhidden">Warning</span>
+          </i>
+          <strong class="bold-small">
+            Please specify your search criteria and try again!
+          </strong>
+      </div>
     {{/each}}
     </tbody>
    
