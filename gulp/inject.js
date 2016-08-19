@@ -17,10 +17,6 @@ function injectingassets() {
         read: false
     });
 
-   /* var injectOptions = {
-        ignorePath: ['/assets']
-    };*/
-
     var options = {
         bowerJson: require('../bower.json'),
         ignorePath: '..'
