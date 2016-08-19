@@ -54,7 +54,7 @@ var ApplicantController = function (dataService) {
         options.query = search
 
         dataService.getAllApplicants(
-            options, function (err, applicant) {
+            options, function (err, applicantlist) {
                 res.render('index', {
                     title: 'Home',
                     applicants: applicantlist
