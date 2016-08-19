@@ -26,7 +26,6 @@ function paginationMiddleware(req, res, next) {
 
     var page = parseInt(req.params.page) || 1,
         num = page * limit;
-
     let pageCount = Math.ceil(total / limit);
 
     for (var number = 1; number <= pageCount; number++) {
@@ -36,7 +35,6 @@ function paginationMiddleware(req, res, next) {
             link: link
         };
     }
-
     res.locals.pages = pages;
     res.locals.limit = limit;
     res.locals.num = num;
