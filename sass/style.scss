@@ -1,40 +1,40 @@
 @import "assets/govuk-elements";
 @import "assets/grid_layout";
-
-// ==========================================================================
-// Utilities
-// ==========================================================================
-//@import 'compass';
 // ==========================================================================
 // Import GOV.UK frontend toolkit
 // ==========================================================================
-
-@import '../govuk/sass/manifest';
-
-
+@import 'assets/css3';
+@import 'assets/colours';
+@import 'assets/measurements';
+@import 'assets/conditionals';
+@import 'assets/grid_layout';
+@import 'assets/design-patterns/alpha-beta';
+@import 'assets/shims';
+@import 'assets/font_stack';
+@import 'assets/device-pixels';
+@import 'assets/typography';
+@import 'assets/url-helpers';
+@import 'assets/design-patterns/buttons';
 // ==========================================================================
 // Modules
 // ==========================================================================
-
 @import 'modules/manifest';
-
-
 // ==========================================================================
 // Elements
 // ==========================================================================
-
-@import 'elements/manifest';
-
-
-// ==========================================================================
-// DEFRA Specific
-// ==========================================================================
-
-@import 'defra/manifest';
-
-
+@import 'assets/elements/helpers';
+@import 'assets/elements/reset';
+@import 'assets/elements/elements-typography';
+@import 'assets/elements/layout';
+@import 'assets/elements/forms';
+@import 'assets/elements/tables';
+@import 'assets/elements/buttons';
+@import 'assets/elements/details';
+@import 'assets/elements/lists';
+@import 'assets/elements/panels';
+@import 'assets/elements/breadcrumbs';
 // ==========================================================================
 // Vendor
 // ==========================================================================
 
-@import 'vendor/manifest';
+//@import 'vendor/manifest';
