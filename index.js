@@ -10,9 +10,6 @@ var applicantController = require('./controllers/applicantController')(dataServi
 var applicantRouter = require('./routes/applicantRouter')(applicantController);
 
 app.use(applicantRouter);
-app.use('/pages',applicantRouter);
-app.use('/pages:/page',applicantRouter);
-app.use('/search', applicantRouter);
 
 app.listen(3080);
 console.log('Vacancy application is running on http://localhost:3080');
