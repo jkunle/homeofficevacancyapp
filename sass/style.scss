@@ -16,10 +16,6 @@
 @import 'assets/url-helpers';
 @import 'assets/design-patterns/buttons';
 // ==========================================================================
-// Modules
-// ==========================================================================
-@import 'modules/manifest';
-// ==========================================================================
 // Elements
 // ==========================================================================
 @import 'assets/elements/helpers';
@@ -33,8 +29,30 @@
 @import 'assets/elements/lists';
 @import 'assets/elements/panels';
 @import 'assets/elements/breadcrumbs';
+// Modules
+// ==========================================================================
+@import 'modules/manifest';
 // ==========================================================================
 // Vendor
 // ==========================================================================
 
 //@import 'vendor/manifest';
+
+.table-font-xsmall {
+
+  th {
+    @include bold-16;
+  }
+
+  td {
+    @include core-16;
+  }
+
+  th,
+  td {
+    padding: em(12, 16) em(20, 16) em(9, 16) 0;
+    line-height: 0.6;
+     border-collapse: collapse;
+    border-spacing: 0;
+  }
+}
