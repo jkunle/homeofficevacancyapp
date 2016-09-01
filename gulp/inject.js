@@ -52,8 +52,7 @@ function assetsIntoScripthbs() {
 }
 var Injector = {
     injectingassets: injectingassets,
-    assetsIntoTemplate: assetsIntoTemplate,
-   // assetsIntoScripthbs : assetsIntoScripthbs
+    assetsIntoTemplate: assetsIntoTemplate
 }
 
 module.exports = Injector;
