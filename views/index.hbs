@@ -1,21 +1,19 @@
- <!-- {{>breadcrumb}}-->
+<!-- {{>breadcrumb}}-->
 		
 	<div class="grid-row">
 		 
         <h2 class="heading-large">{{jobtitle}} 
           <span class="heading-secondary">Job Reference: {{jobref}}</span>
         </h2>
-	      <h2 class="heading-large">Search
-          <span class="heading-secondary">You can find a candidate by number or search for multiple results by typing a sequence of part of their firstname lastname in any order</span>
-        </h2>
+	    
         <div class="example">
         
-          <form class="form" method="POST" action="/search">
+          <form class="form" method="POST" action="/index">
             
             <div class="form-search">
               
               <label class="form-label" for="search"></label>        
-              <input class="form-control" name="search" id="/search" type="text">
+              <input class="form-control" name="search" id="/search" type="text" placeholder="Please type in your search criteria">
               
               <button class="button" type="submit">Search</button>
               
@@ -26,20 +24,15 @@
         
         </div>
 	
-	
-	  <p class="lede"></p>
-
-  <table class="table-customer-search">
+  <table class="table-customer-search table-font-xsmall">
    
     <caption class="visuallyhidden">Customer search listing</caption>
    
     <thead>
       <tr>
         <th scope="col">Candidate No.</th>
-        <th scope="col">First Name</th>
-        <th scope="col">Last Name</th>
+        <th scope="col">Name</th>
         <th scope="col">Application Date</th>
-        <th scope="col">Details</th>
       </tr>
     </thead>
     
@@ -47,10 +40,8 @@
       {{#each applicants}}
       <tr>
         <td>{{number}}</td>
-        <td>{{firstname}}</td>
-        <td>{{lastname}}</td>
+        <td><a href="/index/{{number}}">{{firstname}} {{lastname}}</span></a></td>
         <td>{{date}}</td>
-        <td><a href="/index/{{number}}">View<span class="visuallyhidden">Details</span></a></td>
       </tr>
       {{else}}
        <div class="notice">
@@ -74,5 +65,5 @@
       </ul>
       <a class="pager-next" href="{{Next.link}}">{{Next.number}}</a>
     </div>
-    <div class="pager-summary"> {{#if pages }} Showing {{page}} &ndash; {{num}} of {{total}} results {{/if}}</div>
-  </div>
+    <div class="pager-summary"> {{#if pages }} Showing Page:{{page}} {{pageStart}}&ndash;{{pageEnd}}  of {{total}} results {{/if}}</div>
+</div>

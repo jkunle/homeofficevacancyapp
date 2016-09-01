@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/jkunle/homeofficevacancyapp#readme",
   "devDependencies": {
+    "browser-sync": "^2.14.3",
     "govuk-elements-sass": "^1.2.2",
     "govuk_frontend_toolkit": "^4.16.1",
     "govuk_template_mustache": "^0.18.1",
@@ -29,8 +30,9 @@
     "gulp-sass": "^2.2.0",
     "gulp-sourcemaps": "^1.5.2",
     "gulp-util": "^3.0.7",
-    "gulp-webserver": "^0.9.1",
+    "rewire": "^2.5.2",
     "sinon": "^1.17.5",
+    "supertest": "^2.0.0",
     "wiredep": "^4.0.0"
   },
   "dependencies": {

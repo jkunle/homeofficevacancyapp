@@ -19,13 +19,15 @@ var settings = {
     jobref: 1499294
 };
 var total = require('./services/data.json').length;
-var limit = 10;
+var limit = 25;
 var pages = [];
 
 function paginationMiddleware(req, res, next) {
 
     var page = parseInt(req.params.page) || 1,
-        num = page * limit;
+        pageEnd = page * limit,
+        pageStart = pageEnd - (limit - 1);
+
     let pageCount = Math.ceil(total / limit);
 
     for (var number = 1; number <= pageCount; number++) {
@@ -37,7 +39,8 @@ function paginationMiddleware(req, res, next) {
     }
     res.locals.pages = pages;
     res.locals.limit = limit;
-    res.locals.num = num;
+    res.locals.pageStart = pageStart;
+    res.locals.pageEnd = pageEnd;
     res.locals.pageCount = pageCount;
     res.locals.page = page;
     res.locals.total = total;

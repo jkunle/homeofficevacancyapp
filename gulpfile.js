@@ -1,20 +1,11 @@
 "use strict";
 var gulp = require('gulp'),
-    webserver = require('gulp-webserver'),
+    browserSync = require('browser-sync'),
     nodemon = require('gulp-nodemon'),
     sassing = require('./gulp/sass'),
     Injector = require('./gulp/inject'),
     test = require('./gulp/test'),
     GovUk = require('./gulp/govuk');
-
-/*
-function browser() {
-    gulp.src('./views')
-        .pipe(webserver({
-            livereload: true,
-            open: true
-        }));
-};*/
 
 function serve() {
     var options = {
@@ -30,6 +21,37 @@ function serve() {
         .on('restart', function (ev) {
             console.log('Restarting....');
         })
+        .on('start', function(){
+            console.log('*** nodemon started');
+            startBrowserSync();
+        })
+};
+function startBrowserSync(){
+    if (browerSync.active){
+        return;
+    }
+    console.log('starting browser-sync on port '+ port);
+    
+    var options = {
+        proxy : 'localhost:' + port,
+        port : 3080,
+        files : ['services/**/*.js', 'js/**/*.js', 'assets/**/*.js', 'views/**/*.*', 'index.js'
+            , 'routes/**/*.js', 'controllers/**/*.js', '*.js', '!test','css/**/*.css'],
+        ghostMode :{
+            clicks : true,
+            location : false,
+            forms : true,
+            scroll : true
+        },
+        injectChanges : true,
+        logFileChanges : true,
+        logLevel :'debug',
+        logPrefix : 'gulp-patterns',
+        notify : true,
+        reloadDelay : 1000
+    }
+
+    browserSync(options);
 }
 // tests
 gulp.task('test-runmocha', test.runmocha);

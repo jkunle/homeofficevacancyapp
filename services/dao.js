@@ -1,14 +1,12 @@
 "use strict";
 // Require the nedb module
 var Datastore = require('nedb') //using this cause it feels like mongodb
-var store = require('./data.json');
-
+var store = require('./data');
 // helper function to generate email that matches first.last@domain.com
 function generateCorrelatedEmail(first, last, email) {
     return `${first}.${last}${email.substring(email.indexOf('@'), email.length)}`;
 }
 function DaO() {
-
     // create instances representing a list of applicants and a list of their profiles
     let applicants = new Datastore({ filename: './database/applicants', autoload: true });
     let profiles = new Datastore({ filename: './database/applicant_profiles', autoload: true });
@@ -28,7 +26,6 @@ function DaO() {
         // insert into profiles collection
         profiles.insert({ number, profileMail, contact_number, nationality, work_experience });
     }
-
 
     return {
         applicants: applicants,
