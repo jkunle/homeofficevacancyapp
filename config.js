@@ -15,11 +15,11 @@ var settings = {
     headerClass: 'with-proposition',
     logoLinkTitle: 'Go to the GOV.UK homepage',
     lang: 'en',
-    jobtitle: 'HOM/963/16 Developer x6',
-    jobref: 1499294
+    jobtitle: 'HOM/1077/16 - Senior Developer',
+    jobref: 1501627
 };
 var total = require('./services/data.json').length;
-var limit = 25;
+var limit = 20;
 var pages = [];
 
 function paginationMiddleware(req, res, next) {
