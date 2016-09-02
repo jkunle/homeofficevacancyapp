@@ -20,6 +20,10 @@ function serve() {
     return nodemon(options)
         .on('restart', function (ev) {
             console.log('Restarting....');
+            setTimeout(function(){
+                browserSync.notify('reloading now ...');
+                browserSync.reload({stream : false});
+            },1000);
         })
         .on('start', function(){
             console.log('*** nodemon started');
@@ -30,13 +34,14 @@ function startBrowserSync(){
     if (browerSync.active){
         return;
     }
-    console.log('starting browser-sync on port '+ port);
+    //console.log('starting browser-sync on port '+ port);
     
     var options = {
-        proxy : 'localhost:' + port,
-        port : 3080,
+        server: "./index",
+        proxy : 'localhost:3080' ,
+        port : 3000,
         files : ['services/**/*.js', 'js/**/*.js', 'assets/**/*.js', 'views/**/*.*', 'index.js'
-            , 'routes/**/*.js', 'controllers/**/*.js', '*.js', '!test','css/**/*.css'],
+            , 'routes/**/*.js', 'controllers/**/*.js', '*.js','css/**/*.css'],
         ghostMode :{
             clicks : true,
             location : false,
@@ -45,12 +50,10 @@ function startBrowserSync(){
         },
         injectChanges : true,
         logFileChanges : true,
-        logLevel :'debug',
-        logPrefix : 'gulp-patterns',
+        logPrefix : 'vacancy app',
         notify : true,
         reloadDelay : 1000
     }
-
     browserSync(options);
 }
 // tests
@@ -64,7 +67,8 @@ gulp.task('copying', gulp.parallel(
     GovUk.js
 ), GovUk.sass);
 // injecting assets
-gulp.task('injecting', gulp.series(
+gulp.task('injecting', gulp
+.series(
     Injector.injectingassets,
     Injector.assetsIntoTemplate
 ));
@@ -88,6 +92,4 @@ gulp.task('default', gulp.series(gulp.parallel(
     GovUk.js,
     GovUk.sass
 ), sassing, Injector.injectingassets,
-    gulp.parallel(
-        test.watchmocha, serve
-    )));
+    gulp.parallel(serve,test.watchmocha)));
