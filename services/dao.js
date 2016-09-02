@@ -18,13 +18,13 @@ function DaO() {
     for (let data of store) {
 
         let {number, firstname, lastname, date} = data;
-        let {email, contact_number, nationality, work_experience} = data;
+        let {dob, work_experience} = data;
 
-        var profileMail = generateCorrelatedEmail(firstname, lastname, email);
+       // var profileMail = generateCorrelatedEmail(firstname, lastname, email);
         // insert into applicants collection
         applicants.insert({ number, firstname, lastname, date });
         // insert into profiles collection
-        profiles.insert({ number, profileMail, contact_number, nationality, work_experience });
+        profiles.insert({ number, dob, work_experience });
     }
 
     return {

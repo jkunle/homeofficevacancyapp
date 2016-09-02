@@ -28,11 +28,10 @@ function DataAccess(repo) {
 
                 _repo.profiles.find({ number: parseInt(no) }, function (err, prof_result) {
 
-                    let {profileMail, contact_number, nationality, work_experience} = prof_result[0];
+                    let {dob, work_experience} = prof_result[0];
 
                     return callback(err, {
-                        number, firstname, lastname, profileMail,
-                        contact_number, nationality, work_experience
+                        number, firstname, lastname,dob, work_experience
                     });
 
                 });
