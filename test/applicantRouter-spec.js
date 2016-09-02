@@ -1,11 +1,15 @@
 'use strict';
-var request = require('supertest');
+
 var expect = require('chai');
 var rewire = require('rewire');
 var app = require('../index');
+
 var routes = require('../routes/applicantRouter');
 
 describe("home office vacancy routes", function () {
+
+    var request = require('supertest');
+
     it("loads the application root", function(done){
         request(app).get("/").expect(200).end(done);
     });
@@ -15,4 +19,5 @@ describe("home office vacancy routes", function () {
     it ("loads the Pages page", function(done){
         request(app).get("/pages").expect(200).end(done);
     });
+
 });

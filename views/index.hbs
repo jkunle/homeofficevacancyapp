@@ -2,27 +2,10 @@
 		
 	<div class="grid-row">
 		 
-        <h2 class="heading-large">{{jobtitle}} 
-          <span class="heading-secondary">Job Reference: {{jobref}}</span>
-        </h2>
+  <h2 class="heading-medium">{{jobtitle}} 
+    <p class="heading-secondary">Job Reference: {{jobref}}</p>
+  </h2>
 	    
-        <div class="example">
-        
-          <form class="form" method="POST" action="/index">
-            
-            <div class="form-search">
-              
-              <label class="form-label" for="search"></label>        
-              <input class="form-control" name="search" id="/search" type="text" placeholder="Please type in your search criteria">
-              
-              <button class="button" type="submit">Search</button>
-              
-            </div>
-          
-          </form>
-        
-        
-        </div>
 	
   <table class="table-customer-search table-font-xsmall">
    
@@ -30,7 +13,6 @@
    
     <thead>
       <tr>
-        <th scope="col">Candidate No.</th>
         <th scope="col">Name</th>
         <th scope="col">Application Date</th>
       </tr>
@@ -39,7 +21,6 @@
     <tbody>
       {{#each applicants}}
       <tr>
-        <td>{{number}}</td>
         <td><a href="/index/{{number}}">{{firstname}} {{lastname}}</span></a></td>
         <td>{{date}}</td>
       </tr>
