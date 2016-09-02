@@ -11,7 +11,8 @@ var applicantRouter = require('./routes/applicantRouter')(applicantController);
 
 app.use(applicantRouter);
 
-app.listen(3080);
+if(!module.parent){ app.listen(3080); }
+
 console.log('Vacancy application is running on http://localhost:3080');
 
 module.exports = app;
