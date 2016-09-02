@@ -1,5 +1,5 @@
 # Home office vacancy application
-A small website that shows a list of applicants for a job vacancy. Specifically for the post HOM/963/16 Developer x6
+A small website that shows a list of applicants for a job vacancy.
 
 ## Requirements
 - This application requires the latest version of node v6.4.0 and npm 3.10. particularly it uses a few ES2015 syntax like template strings and array destructuring
@@ -18,3 +18,4 @@ $ npm install gulpjs/gulp-cli -g
 ## Running the application
 
 $ Run the default the Gulp task this would start up the localhost server which can be accessed on port 3080
+
