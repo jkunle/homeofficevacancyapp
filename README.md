@@ -1,6 +1,7 @@
 # Home office vacancy application
 A small website that shows a list of applicants for a job vacancy.
-
+## Master branch contains source for SNR Role.
+## test_vacancy_app contains source for JNR Role.
 ## Requirements
 - This application requires the latest version of node v6.4.0 and npm 3.10. particularly it uses a few ES2015 syntax like template strings and array destructuring
 - This application also relies heavily on gulp 4 to run various custom task and test.
